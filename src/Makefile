@@ -31,33 +31,33 @@ IMC = 1
 #Comment it out it if you are compiling with Cygwin
 OPT_FLAG = -DMCCP
 
-C_FLAGS = $(OPT_FLAG) -O -g3 -Wall $(PROF) $(DBUGFLG) $(SOLARIS_FLAG) $(TIME) $(REG)
-L_FLAGS = $(OPT_FLAG) $(PROF) $(SOLARIS_LINK) ${MATH_LINK} -lz
+C_FLAGS = $(OPT_FLAG) -O -g3 -Wall $(PROF) $(DBUGFLG) $(SOLARIS_FLAG) $(TIME) $(REG) $(shell pkg-config --cflags zlib libxcrypt) -fcommon
+L_FLAGS = $(OPT_FLAG) $(PROF) $(SOLARIS_LINK) ${MATH_LINK} $(shell pkg-config --libs zlib libxcrypt) -fcommon
 
 #D_FLAGS : For the DNS Slave process. No need in linking all the extra libs for this.
 D_FLAGS = -g3 -O $(PROF) $(SOLARIS_LINK)
 
 O_FILES = act_comm.o act_info.o act_move.o act_obj.o act_wiz.o ban.o \
-          board.o boards.o bounty.o build.o clans.o colorize.o comm.o \
-          comments.o const.o db.o deity.o editor.o fight.o finger.o grub.o \
-          handler.o hashstr.o hiscores.o hotboot.o house.o ibuild.o ident.o \
-          imm_host.o interp.o magic.o makeobjs.o mapout.o marry.o \
-          misc.o mpxset.o mud_comm.o mud_prog.o new_fun.o pfiles.o planes.o \
-          planet.o player.o polymorph.o rare.o requests.o reset.o save.o \
-          services.o shops.o skills.o skills_android.o skills_dbs.o skills_genie.o \
-          space.o special.o stat_obj.o tables.o track.o update.o dns.o new_auth.o \
-          sha256.o
+	  board.o boards.o bounty.o build.o clans.o colorize.o comm.o \
+	  comments.o const.o db.o deity.o editor.o fight.o finger.o grub.o \
+	  handler.o hashstr.o hiscores.o hotboot.o house.o ibuild.o ident.o \
+	  imm_host.o interp.o magic.o makeobjs.o mapout.o marry.o \
+	  misc.o mpxset.o mud_comm.o mud_prog.o new_fun.o pfiles.o planes.o \
+	  planet.o player.o polymorph.o rare.o requests.o reset.o save.o \
+	  services.o shops.o skills.o skills_android.o skills_dbs.o skills_genie.o \
+	  space.o special.o stat_obj.o tables.o track.o update.o dns.o new_auth.o \
+	  sha256.o
 
 C_FILES = act_comm.c act_info.c act_move.c act_obj.c act_wiz.c ban.c \
-          board.c boards.c bounty.c build.c clans.c colorize.c comm.c \
-          comments.c const.c db.c deity.c editor.c fight.c finger.c grub.c \
-          handler.c hashstr.c hiscores.c hotboot.c house.c ibuild.c ident.c \
-          imm_host.c interp.c magic.c makeobjs.c mapout.c marry.c \
-          misc.c mpxset.c mud_comm.c mud_prog.c new_fun.c pfiles.c planes.c \
-          planet.c player.c polymorph.c rare.c requests.c reset.c save.c \
-          services.c shops.c skills.c skills_android.c skills_dbs.c\
-          space.c special.c stat_obj.c tables.c track.c update.c dns.c skills_genie.c \
-          new_auth.c sha256.c
+	  board.c boards.c bounty.c build.c clans.c colorize.c comm.c \
+	  comments.c const.c db.c deity.c editor.c fight.c finger.c grub.c \
+	  handler.c hashstr.c hiscores.c hotboot.c house.c ibuild.c ident.c \
+	  imm_host.c interp.c magic.c makeobjs.c mapout.c marry.c \
+	  misc.c mpxset.c mud_comm.c mud_prog.c new_fun.c pfiles.c planes.c \
+	  planet.c player.c polymorph.c rare.c requests.c reset.c save.c \
+	  services.c shops.c skills.c skills_android.c skills_dbs.c\
+	  space.c special.c stat_obj.c tables.c track.c update.c dns.c skills_genie.c \
+	  new_auth.c sha256.c
 
 H_FILES = mud.h bet.h board.h finger.h hotboot.h house.h pfiles.h rare.h new_auth.h
 
